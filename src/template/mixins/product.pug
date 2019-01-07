@@ -1,0 +1,75 @@
+//-
+ Миксин блока продукта
+ Входящие параметры: 
+    имя, 
+    ссылка на изображение, 
+    цвет товара, цена, 
+    ?старая цена,
+    ?размер блока
+    ?тип изображения(обложкой)
+//
+
+mixin product(name, src, color, price, oldPrice, large= false, cover= false)
+    -var src = '/images/products/product-'+ src;
+    
+    // Блок списка цен
+    mixin price-list
+        ul.product__price-list
+            if oldPrice
+                li.product__price-item.product__old-price= oldPrice
+            li.product__price-item= '$'+ price
+
+    mixin action-list
+        ul.product-action-list
+            li.product-action-list__item
+                a.product-action-list__link(href="/")
+                    i.fas.fa-shopping-cart.product-action-list__icon
+                    span.product-action-list__text
+                        |Add to cart
+
+
+
+    article.product
+        if large == false
+            +action-list
+
+        img.product__image(src=src alt=name width="270" height="270")
+
+        // Если широкий блок, то показываем цены сверху
+        if large
+            +price-list
+        section.product__inner
+            .product__block
+                h2.product__title= name
+                if color
+                    span.product__color= color
+                if large == false
+                    +price-list
+            if large
+                ul.product-info
+                    li.product-info__item= large
+                    li.product-info__item.product-info__item_buy
+                        a.product-info__link(href="/")
+                            |Buy Now
+            
+//-
+ Миксин едицины списка продуктов
+ Вызывает миксин самого продукта
+ Входящие параметры: 
+    имя, 
+    ссылка на изображение, 
+    цвет товара, цена, 
+    ?старая цена,
+    ?размер блока
+    ?тип изображения(обложкой)
+//
+mixin product-item(name, src, color, price, oldPrice= false, large= false, cover= false)
+    -var extendClass = '';
+    if large
+        -var extendClass = extendClass+'product-list__item_large'
+
+    if cover
+        -var extendClass = 'product-list__item_cover'
+
+    li.product-list__item(class=extendClass)
+        +product(name, src, color, price, oldPrice, large, cover)

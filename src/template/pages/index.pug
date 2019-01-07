@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        block title
+            title Portland
+        meta(content="Дмитрий Рыбкин" name="author")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        meta(content="ie=edge" http-equiv="x-ua-compatible")
+
+        //Main project style
+        link(rel='stylesheet' href='css/main.css')
+        link(rel="icon" href="assets/img/logo.png")
+
+
+    body#body
+
+        //Подключаем основные миксины
+        include ../mixins/main
+
+        include ../components/_header
+        include ../components/_slider
+
+        .site-container.main-container
+            include ../components/_filter-panel
+
+            include ../components/_left-menu
+            include ../components/main
+
+            include ../components/_pagination
+            include ../components/_best-sellers
+
+        include ../components/_testimoials
+        include ../components/_footer
+
+        script(src='js/main.js' defer)

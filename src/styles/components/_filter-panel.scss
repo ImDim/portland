@@ -1,0 +1,184 @@
+$br1: 1050px;
+$br2: 750px;
+$br3: 440px;
+$br4: 340px;
+$br5: 270px;
+
+.filter-panel {
+    $panel: &;
+
+    margin: {
+        top: 50px;
+        bottom: 30px;
+    }
+    background: $blocksBg;
+    border-radius: 5px;
+    width: 100%;
+    flex-grow: 1;
+    box-sizing: border-box;
+
+    &__form {
+        @include flex(center, center);
+    }
+
+    &__block, &__inner {
+        @include flex(space-between, center);
+        flex-grow: 1;
+    }
+
+    &__block {
+        padding: 15px 20px;
+        box-sizing: border-box;
+        @media all and (max-width: $br5) {
+            width: 100%;
+        }
+    }
+
+    &__sort-by, &__ship-top {
+        @media all and (max-width: $br1) {
+            order: 1;
+        }
+    }
+    &__sort-by {
+        @media all and (max-width: $br1) {
+            border-right: 1px solid $mainBorderColor;
+        }
+    }
+    &__freeshipp-block {
+        @media all and (max-width: $br3) {
+            order: 2;
+        }
+    }
+
+    &__label {
+        margin: 0 {
+            right: 15px;
+        }
+        color: $secondColor;
+        @include upperCase;
+    }
+
+    &__select {
+        .dropdown {
+            &-toggle {
+                @include upperCase;
+                color: $firstColor;
+                font-weight: 500;
+                text-decoration: none;
+            }
+            &-menu {
+                border-color: $mainBorderColor;
+
+                .fas {
+                    color: #d7dcec;
+                    margin-right: 10px;
+                    min-width: 14px;
+                    text-align: right;
+                }
+            }
+            &-item {
+                padding: 10px 15px;
+                font-weight: 500;
+                color: $firstColor;
+
+                &:active {
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+    &__inner {
+        $border: 1px solid $mainBorderColor;
+        border: {
+            left: $border;
+            right: $border;
+        }
+        @media all and (max-width: $br1) {
+            border: none {
+                bottom: $border;
+            }
+            width: 100%;
+        }
+    }
+    &__keywords-block {
+        @media all and (max-width: $br2) {
+            order: 1;
+        }
+    }
+
+    &__field {
+        @include placeholder {
+            color: #b9bfd3;
+        };
+        background: #f0f2f7;
+        border: 1px solid #e3e8f0;
+        border-radius: 50px;
+        outline: none;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        transition: all .2s ease;
+        color: #98a4c1;
+        &:focus {
+            background: #FFF;
+            color: $firstColor;
+        }
+    }
+    &-freeshipp {
+        @include flex(flex-start, center);
+        margin-bottom: 0;
+        cursor: pointer;
+
+        &__checkbox {
+            @extend .checkbox_rounded;
+        }
+        &__text {
+            font-weight: 500;
+        }
+    }
+    &__keywords-field {
+        max-width: 165px;
+        flex-shrink: 1;
+        resize: horizontal;
+        @media all and (max-width: $br2) and (min-width: $br3) {
+            flex-grow: 1;
+            max-width: 100%;
+        }
+        @media all and (max-width: $br4) {
+            flex-grow: 1;
+            max-width: 100%;
+            margin-top: 7px;
+        }
+    }
+    &-price {
+        &__label {
+            @media all and (max-width: 300px) {
+                flex-grow: 1;
+                width: 100%;
+                margin-bottom: 7px;
+            }
+        }
+        &__field {
+            @include textfield;
+            width: 70px;
+            resize: horizontal;
+            
+            @media all and (max-width: $br2) and (min-width: $br3) {
+                width: 100px;
+                flex-shrink: 1;
+            }
+            @media all and (max-width: $br5) {
+                width: 100%;
+            }
+        }
+        &__divider {
+            @media all and (max-width: $br5) {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+.dropdown-menu {
+    display: none;
+}

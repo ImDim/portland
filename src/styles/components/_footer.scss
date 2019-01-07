@@ -1,0 +1,80 @@
+$br1: 490px;
+
+.site-footer {
+    background: #222328;
+
+    &__top {
+        @include flex(space-between, center);
+        padding: 60px 0;
+        border-bottom: 1px solid #2d2e33;
+        @media all and (max-width: $br1) {
+            padding-bottom: 30px;
+        }
+    }
+    &__bottom {
+        @include flex(space-between, center);
+        padding: 50px 0;
+        opacity: .3;
+        color: #FFF;
+        @media all and (max-width: $br1) {
+            padding-bottom: 30px;
+        }
+    }
+    &-menu {
+        @extend .list_unstyled;
+        @include flex(center, center);
+        @media all and (max-width: $br1) {
+            order: 1;
+            margin-top: 25px;
+        }
+
+        &__link {
+            display: inline-block;
+            padding: 7px 10px;
+            @include link-style(#FFF);
+            @include upperCase;
+        }
+    }
+    &__about {
+        max-width: 500px;
+        font: {
+            family: $secondFont;
+            style: italic;
+            size: 16px;
+        }
+        @media all and (max-width: $br1) {
+            text-align: center;
+        }
+    }
+    &-links {
+        @extend .list_unstyled;
+        @include flex(center, center);
+
+        &__item {
+            margin-left: 15px;
+        }
+
+        &__link, &__link:hover {
+            color: #FFF;
+            @include upperCase;
+            font-size: 12px;
+        }
+    }
+}
+
+.social-list {
+    @extend .list_unstyled;
+    @include flex(center, center);
+
+    &__item {
+        margin-left: 20px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    &__link {
+        @include link-style(#FFF);
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,58 @@
+// Пункт меню основной навигации
+mixin site-header-nav__item(text)
+    li.site-header-nav__item
+        a.site-header-nav__link(href="/")= text
+
+// Пункт меню дополнительной навигации
+mixin site-header-menu__item(text)
+    li.site-header-menu__item&attributes(attributes)
+        a.site-header-menu__link(href="/")
+            span.site-header-menu__text= text
+
+header.site-header
+    .site-header__top
+        .site-container
+
+            .hamburger.site-header__burger
+                .hamburger__inner
+
+            a.site-logo.site-logo_dark.site-header__logo(href="/")
+
+            // Основная навигация
+            nav.site-header-nav
+                ul.site-header-nav__list
+                    +site-header-nav__item('Home')
+                    +site-header-nav__item('Devices')
+                    +site-header-nav__item('Delivery & Payment')
+                    +site-header-nav__item('Guarantee')
+                    +site-header-nav__item('About Us')
+
+            ul.user-block
+                li.user-block__item
+                    a.user-block__link.user-block__basket(href="/")
+                        i.fas.fa-shopping-cart.user-block__icon
+                        span.user-block__text
+                            |Cart
+                        span.user-block__info
+                            |0
+
+                li.user-block__item
+                    a.user-block__link(href="/")
+                        i.fas.fa-sign-in-alt.user-block__icon.user-block__auth-icon
+                        span.user-block__text
+                            |Sign in
+
+    .site-header__bottom
+        .site-container
+            // Дополнительная навигация по сайту
+            ul.site-header-menu
+                +site-header-menu__item('Top sales')
+                +site-header-menu__item('Brand Focus')
+                +site-header-menu__item('Hi-tech')
+                +site-header-menu__item('Best sellers')
+                +site-header-menu__item('Projects')
+                +site-header-menu__item('Support')
+
+            .site-header-search
+                i.fas.fa-search.site-header-search__icon
+                input.site-header-search__field(type="text" placeholder="I'm looking for..")

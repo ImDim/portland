@@ -1,0 +1,268 @@
+/*
+  Шапка сайта
+*/
+$br1: 960px;
+$br2: 470px;
+$br3: 360px;
+
+.site-header {
+  background: $blocksBg;
+
+  // Верхняя часть шапки
+  &__top {
+    .site-container {
+      @include flex(flex-start, center);
+    }
+    min-height: 50px;
+    border-bottom: 1px solid $mainBorderColor;
+    @media all and (max-width: $br2) {
+      padding: 20px 0;
+    }
+  }
+
+  // Нижняя часть шапки
+  &__bottom {
+    .site-container {
+      @include flex(flex-start, center);
+      min-height: 40px;
+      @media all and (max-width: $br3) {
+        padding: 0;
+      }
+    }
+  }
+
+  &__logo {
+    width: 150px;
+    height: 90px;
+    @media all and (max-width: $br2) {
+      display: none;
+    }
+  }
+
+  &__burger {
+    margin-right: 25px;
+    display: none;
+    @media all and (max-width: $br1) {
+      display: flex;
+    }
+  }
+  &__logo, &__burger {
+    position: relative;
+    z-index: 9;
+   }
+
+  // Основная навигация по сайту
+  &-nav {
+    flex-grow: 1;
+
+    @media all and (max-width: $br1) {
+      display: none;
+      order: 1;
+      border-top: 1px solid $mainBorderColor;
+      margin-top: 15px;
+    }
+
+    &__list {
+      @include flex(center, center);
+      @extend .list_unstyled;
+    }
+
+    &__link {
+      $link: &;
+
+      @include link-style($firstColor);
+      display: inline-block;
+      position: relative;
+      padding: 35px 15px;
+      font-weight: 500;
+      text-decoration: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background: $secondBorderColor;
+        left: 50%;
+        transition: all .2s ease;
+      }
+      &:hover::before {
+        width: 100%;
+        left: 0;
+      }
+      @media all and (max-width: $br1) {
+        padding: 15px;
+      }
+    }
+  }
+
+  // Дополнительное меню
+  &-menu {
+    $menu: &;
+
+    @include flex(flex-start, stretch);
+    @extend .list_unstyled;
+    align-self: stretch;
+    flex-grow: 1;
+
+    @media all and (max-width: $br1) {
+      display: none;
+      justify-content: center;
+      border-bottom: 1px solid $mainBorderColor;
+    }
+
+    &__item:last-child {
+      margin-left: auto;
+      @media all and (max-width: $br1) {
+        margin-left: 0;
+      }
+      #{$menu}__link {
+        padding: {
+          left: 30px;
+          right: 30px;
+        }
+      }
+    }
+
+    &__link {
+      @include link-style($secondColor, $firstColor);
+      @include upperCase;
+      display: inline-block;
+      position: relative;
+      padding: 20px 15px {
+        bottom: 21px;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: #f8faff;
+        left: 50%;
+        transition: all .2s ease;
+        z-index: 0;
+      }
+      &:hover {
+        color: #78809a;
+
+        &::before {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+    &__text {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  // Блок поиска
+  &-search {
+    $border: 1px solid $mainBorderColor;
+    border: {
+      left: $border;
+      right: $border;
+    };
+    position: relative;
+    @media all and (max-width: $br1) {
+      border: none;
+      width: 100%;
+    }
+    padding-left: 20px;
+
+    &__icon {
+      color: $firstColor;
+      position: absolute;
+      top: 23px;
+      left: 20px;
+    }
+
+    &__field {
+      border: none;
+      padding: 20px {
+        left: 30px;
+      }
+      outline: none;
+      width: 200px;
+      box-sizing: border-box;
+      transition: all .2s ease-in-out;
+      @media all and (max-width: $br1) {
+        width: 100%;
+      }
+
+      &:focus {
+        width: 300px;
+        @media all and (max-width: $br1) {
+          width: 100%;
+        }
+      }
+
+      @include placeholder {
+        color: $secondColor;
+      }
+    }
+  }
+}
+
+// Блок пользователя
+.user-block {
+  @include flex(flex-end, center);
+  @extend .list_unstyled;
+  margin-left: auto;
+
+  &__item {
+    margin-left: 5px;
+  }
+
+  &__link {
+    @include link-style(#343e5c);
+    display: inline-block;
+    padding: 7px 20px;
+    color: #343e5c;
+    font-weight: 500;
+    border: 2px solid $mainBorderColor;
+    border-radius: 50px;
+    transition: border .2s ease;
+    
+    &:hover {
+      border-color: #ced4e6;
+    }
+    @media all and (max-width: $br3) {
+      padding: 7px 10px;
+    }
+  }
+
+  &__basket, &__basket:hover {
+    border-color: transparent;
+  }
+
+  &__icon {
+    //padding-right: 7px;
+  }
+
+  &__auth-icon {
+    @media all and (min-width: $br3) {
+      display: none;
+    }
+  }
+
+  &__text {
+    margin-left: 7px;
+    @media all and (max-width: $br3) {
+      display: none;
+    }
+  }
+  
+  &__info {
+    background: #e3e8f0;
+    padding: 3px 7px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,16 @@
+.main-container {
+    @include flex(flex-start, flex-start);
+}
+$br1: 1000px;
+
+.main-content {
+    width: calc(100% - 300px);
+    margin-left: 30px;
+    @media all and (max-width: $br1) {
+        width: 100%;
+        margin-top: 30px;
+        margin-left: 0;
+    }
+}
+
+@import './product';

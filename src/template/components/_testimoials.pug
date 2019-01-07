@@ -1,0 +1,42 @@
+mixin testimoial(testimoial)
+    article.testimoial
+        header.testimoial__header
+            img.testimoial__photo(src='/images/testimoials/'+testimoial.photo alt=testimoial.author width="42" height="42")
+            .testimoial__inner
+                h2.testimoial__author= testimoial.author
+                span.testimoial__author-position= testimoial.position
+
+        p.testimoial__text= testimoial.text
+
+
+section.site-testimoials
+    .site-container
+        h2.site-testimoials__header
+            |What Our Customers Have to Say
+        p.site-testimoials__desc
+            |Couple of Words About This Stories Section
+
+        ul.site-testimoials__list
+            li.site-testimoials__item
+                +testimoial({
+                    photo: 'photo-0.jpg',
+                    author: 'Celia Fields',
+                    position: 'UX Expert',
+                    text: 'This I have produced as a scantling of Jack’s great eloquence and the force of his reasoning upon such abstruse matters.'
+                })
+
+            li.site-testimoials__item
+                +testimoial({
+                    photo: 'photo-1.jpg',
+                    author: 'Alexander Lees',
+                    position: 'Founder',
+                    text: 'Looking cautiously round, to ascertain that they were not overheard, the two hags cowered nearer to the fire, and chuckled heartily.'
+                })
+
+            li.site-testimoials__item
+                +testimoial({
+                    photo: 'photo-2.jpg',
+                    author: 'Lenora Sandoval',
+                    position: 'Product Manager',
+                    text: 'This sounded a very good reason, and Alice was quite pleased to know it. \'I never thought of that before!\' she said.'
+                })

@@ -1,0 +1,64 @@
+$br1: 300px;
+
+.site-testimoials {
+    margin-top: 50px;
+    padding: 70px 0;
+    background: $blocksBg;
+    @media all and (max-width: $br1) {
+        padding: 30px 0;
+    }
+
+    &__header {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bolder;
+        color: $thirdColor;
+    }
+    &__desc {
+        font-family: $secondFont;
+        font-style: italic;
+        text-align: center;
+        color: $secondColor;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    &__list {
+        @extend .list_unstyled;
+        @include flex(center, flex-start);
+        margin-top: 40px;
+    }
+    &__item {
+        width: 260px;
+        margin: 0 40px {
+            bottom: 40px;
+        }
+        @media all and (max-width: $br1) {
+            margin: 0{
+                bottom: 20px;
+            }
+        }
+    }
+}
+
+
+.testimoial {
+    &__header {
+        @include flex(flex-start, flex-start);
+    }
+    &__photo {
+        margin-right: 15px;
+        border-radius: 99px;
+    }
+    &__author {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    &__author-position {
+        color: $secondColor;
+    }
+    &__text {
+        margin-top: 20px;
+        font-family: $secondFont;
+        font-size: 16px;
+    }
+}

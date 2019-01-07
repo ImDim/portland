@@ -1,0 +1,9 @@
+{
+  "name": "rybkins",
+  "dependencies": {
+    "components-font-awesome": "^5.4.2"
+  },
+  "config": {
+    "strict-ssl": false
+  }
+}

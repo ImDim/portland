@@ -1,0 +1,109 @@
+.pagination {
+    $pag: &;
+
+    @extend .list_unstyled;
+    @include flex(center, center);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+    background: $blocksBg;
+    border-radius: 5px;
+    position: relative;
+    overflow: visible;
+
+    &__item {
+        @include flex(center, stretch);
+        margin: 20px 10px;
+        position: relative;
+        @media all and (max-width: 700px) {
+            margin: 10px 0;
+        }
+
+        &_prev, &_next {
+            margin: 0;
+            flex-grow: 1;
+            
+            align-self: stretch;
+            @media all and (max-width: 1000px) {
+                flex-grow: 0;
+            }
+            @media all and (max-width: 550px) {
+                order: 1;
+                margin-left: 0;
+                border-top-width: 1px;
+                min-width: 50%;
+            }
+            @media all and (max-width: 500px) {
+                order: 0;
+                border: none;
+                min-width: 0;
+                flex-grow: 0;
+            }
+            
+            #{$pag}__link {
+                border: 0px solid $mainBorderColor;
+                width: 200px;
+                box-sizing: border-box;
+                flex-grow: 0;
+                border-radius: 0;
+                &:hover {
+                    background: #f6f7fb;
+                }
+                @media all and (max-width: 1000px) {
+                    border: none;
+                    width: auto;
+                }
+            }
+        }
+        &_prev {
+            justify-content: flex-start;
+            
+            
+            #{$pag}__link {
+                border-right-width: 1px;
+                @media all and (max-width: 550px) {
+                    border-right-width: 0;
+                    margin-right: 0;
+                }
+            }
+        }
+        &_next {
+            justify-content: flex-end;
+            border-left-width: 1px;
+            @media all and (max-width: 550px) {
+                margin-left: 0;
+            }
+            #{$pag}__link {
+                border-left-width: 1px;
+            }
+        }
+        &_active {
+            #{$pag}__link {
+                @include link-style($secondColor);
+                cursor: text;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
+
+                &:hover {
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+    &__link {
+        @include flex(center, center);
+        flex-grow: 1;
+        padding: 13px 20px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 99px;
+        cursor: pointer;
+        @include link-style($firstColor);
+        border: 1px solid transparent;
+        
+        &:hover {
+            border-color: $mainBorderColor;
+        }
+    }
+}

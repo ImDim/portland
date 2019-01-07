@@ -1,0 +1,70 @@
+$blocksBg: #FFF;
+$siteBg: #e4e5e7;
+
+$firstFont: 'Montserrat', sans-serif;
+$secondFont: 'Crimson Text', sans-serif;
+
+$firstColor: #343e5c;
+$secondColor: #a1a7bd;
+$thirdColor: #222328;
+
+$mainBorderColor: #f0f2f7;
+$secondBorderColor: #a1a8bb;
+
+@mixin upperCase {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@mixin cover-block {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin textfield {
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: textfield;
+    margin: 0;
+    -webkit-appearance: none; 
+    margin: 0;
+  }
+}
+
+@mixin flex($jc: flex-start, $ai: flex-start) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-wrap: wrap;
+}
+@mixin link-style($color, $hoverColor: $color) {
+  color: $color;
+  text-decoration: none;
+
+  &:hover {
+    color: $hoverColor;
+  }
+  &:focus {
+    color: $color;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+  &::-moz-placeholder {
+    @content
+  }
+  &:-ms-input-placeholder {
+    @content
+  }
+  &:-moz-placeholder {
+    @content
+  }
+}

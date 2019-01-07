@@ -1,0 +1,215 @@
+$br1: 1210px;
+$br2: 470px;
+
+.product {
+    width: 100%;
+    box-sizing: border-box;
+    background: $blocksBg;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+
+    &__image {
+        width: 100%;
+        max-width: 270px;
+        height: auto;
+        margin: 0 auto;
+        position: relative;
+        display: block;
+    }
+    &__inner {
+        position: relative;
+        z-index: 1;
+        padding: 25px 20px {
+            top: 15px;
+        }
+        text-align: center;
+    }
+    &__title {
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 20px;
+        color: #1c1e23;
+    }
+    &__color {
+        text-transform: uppercase;
+        color: $secondColor;
+        display: block;
+        margin-top: 12px;
+    }
+    &__price-list {
+        @extend .list_unstyled;
+        @include flex(center, center);
+        margin-top: 11px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    &__old-price {
+        color: $secondColor;
+        text-decoration: line-through;
+        margin-right: 15px;
+    }
+
+    &-info {
+        margin-left: auto;
+    }
+    &-action-list {
+        @extend .list_unstyled;
+        @include flex(center, center);
+
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+
+        z-index: 3;
+        box-sizing: border-box;
+
+        &__item {
+            flex-grow: 1;
+            margin: 10px;
+        }
+        &__link {
+            @include link-style(#6f5e21);
+
+            display: inline-block;
+            background: #ebc127;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 99px;
+            text-align: center;
+            font-weight: 500;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                box-shadow: 0px 0px 25px rgba(0, 0, 0, .05);
+            }
+
+            &_active {
+                background: #2db91e;
+                color: #278c1b;
+            }
+        }
+        &__icon {
+            margin-right: 7px;
+        }
+    }
+    &:hover {
+        .product-action-list {
+            opacity: 1;
+        }
+    }
+}
+
+.product-list {
+    @extend .list_unstyled;
+    @include flex(flex-start, stretch);
+    margin-right: -30px;
+
+    @media all and (max-width: $br1) {
+        justify-content: center;
+    }
+
+    &__item {
+        @include flex(flex-start, stretch);
+        width: 270px;
+        margin: {
+            right: 30px;
+            bottom: 30px;
+        }
+
+        @media all and (max-width: $br1) {
+            flex-grow: 1;
+        }
+        
+        // Изображение обложкой
+        &_cover {
+            .product {
+                &__inner {
+                    top: 30px;
+                    position: absolute;
+                    z-index: 3;
+                }
+                &__image {
+                    height: 100%;
+                }
+            }
+        }
+
+        // Широкий блок
+        &_large {
+            $br3: 320px;
+            width: 570px;
+            .product {
+                &__image {
+                    max-width: 100%;
+                }
+                &__inner {
+                    @include flex;
+                    
+                    padding: 20px;
+                    text-align: left;
+                }
+                &__price-list {
+                    color: #fff;
+                    font-weight: 400;
+                    font-size: 13px;
+                    padding: 3px 5px;
+                    background: rgba(0, 0, 0, 0.8);
+                    border-radius: 3px;
+                    position: absolute;
+                    left: 15px;
+                    top: 0;
+                }
+                &-info {
+                    @include flex;
+                    @extend .list_unstyled;
+                    margin-left: auto;
+                    @media all and (max-width: $br2) {
+                        flex-grow: 1;
+                        width: 100%;
+                        margin-top: 15px;
+                    }
+
+                    &__item {
+                        padding: 7px 30px;
+                        text-align: center;
+                        font-size: 11px;
+                        font-weight: 500;
+                        border: 2px solid $mainBorderColor {
+                            right-width: 0
+                        }
+                        &:first-child {
+                            border-radius: 50px 0 0 50px;
+                            @media all and (max-width: $br3) {
+                                border-radius: 50px;
+                                margin-top: 0;
+                            }
+                        }
+                        &:last-child {
+                            border-right-width: 2px;
+                            border-radius: 0 50px 50px 0;
+                            @media all and (max-width: $br3) {
+                                border-radius: 50px;
+                            }
+                        }
+                        @media all and (max-width: $br3) {
+                            width: 100%;
+                            flex-grow: 1;
+                            border-radius: 50px;
+                            border-width: 2px;
+                            margin-top: 5px;
+                        }
+                        &_buy {
+                            text-transform: uppercase;
+                        }
+                    }
+                    &__link {
+                        @include link-style($firstColor);
+                    }
+                }
+            }
+        }
+    }
+}

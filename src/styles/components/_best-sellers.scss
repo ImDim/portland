@@ -1,0 +1,37 @@
+$br1: 1010px;
+
+.best-sellers {
+    margin-top: 50px;
+    background: $blocksBg;
+    border-radius: 5px;
+    flex-grow: 1;
+
+    &__title {
+        margin: 0;
+        padding: 20px;
+        border-bottom: 1px solid $mainBorderColor;
+        @include upperCase;
+        text-align: center;
+    }
+    &__list {
+        @include flex;
+        @extend .list_unstyled;
+    }
+    &__item {
+        flex-grow: 1;
+        width: 240px;
+        max-width: 280px;
+        border-right: 1px solid $mainBorderColor;
+        &:last-child {
+            border-right-width: 0;
+        }
+        @media all and (max-width: $br1) {
+            width: 300px;
+            max-width: 100%;
+            border-bottom: 1px solid $mainBorderColor;
+        }
+        @media all and (max-width: 420px) {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+section.filter-panel
+    form.filter-panel__form
+        .filter-panel__block.filter-panel__sort-by
+            label.filter-panel__label Sort By:
+            .dropdown.filter-panel__select
+                a#sortByMenuLink.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                    |Best match
+                .dropdown-menu(aria-labelledby="sortByMenuLink")
+                    a.dropdown-item(href="/")
+                        i.fas.fa-search-dollar
+                        |Best match
+                    a.dropdown-item(href="/")
+                        i.fas.fa-star-half-alt
+                        |Popularity
+                    a.dropdown-item(href="/")
+                        i.fas.fa-dollar-sign
+                        |Sales
+
+        .filter-panel__inner
+            .filter-panel__block.filter-panel__keywords-block
+                label.filter-panel__label Keywords
+                input.filter-panel__field.filter-panel__keywords-field(placeholder="Tablet")
+
+            .filter-panel__block.filter-panel-price
+                label.filter-panel__label.filter-panel-price__label Price
+                input(type="number" value="10").filter-panel__field.filter-panel-price__field
+                span.filter-panel-price__divider
+                    |-
+                input(type="number" value="1000").filter-panel__field.filter-panel-price__field
+
+            .filter-panel__block.filter-panel__freeshipp-block
+                label.filter-panel-freeshipp
+                    input(type="checkbox").filter-panel-freeshipp__checkbox
+                    span.filter-panel-freeshipp__text Free Shipping
+
+        .filter-panel__block.filter-panel__ship-top
+            label.filter-panel__label Ship to:
+            .dropdown.filter-panel__select
+                a#shipToMenuLink.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                    |USA
+                .dropdown-menu.dropdown-menu-right(aria-labelledby="shipToMenuLink")
+                    a.dropdown-item(href="/")
+                        |USA
+                    a.dropdown-item(href="/")
+                        |ITA
+                    a.dropdown-item(href="/")
+                        |FRA

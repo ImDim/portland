@@ -1,0 +1,79 @@
+/*
+  Основной слайдер
+*/
+$br1: 800px;
+
+.site-slider {
+    background: rgb(28, 30, 35);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    .site-container {
+        position: relative;
+    }
+
+    &__list {
+        @extend .list_unstyled;
+    }
+    &__item {
+        padding: 100px 0;
+        &::before {
+            content: '';
+            @include cover-block;
+            background: rgba(28, 30, 35, 0.9);
+            z-index: 1;
+            display: none;
+            @media all and (max-width: $br1) {
+                display: block;
+            }
+        }
+    }
+
+    &__inner {
+        max-width: 460px;
+        min-height: 220px;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__header {
+        font-weight: bold;
+        font-size: 42px;
+    }
+
+    &__text {
+        font-family: $secondFont;
+        font-size: 16px;
+    }
+
+    &__link {
+        display: inline-block;
+        margin-top: 20px;
+        min-width: 170px;
+        padding: 12px 25px;
+        @include link-style(#d8e2fd, #FFF);
+        text-transform: uppercase;
+        font-size: 12px;
+        text-align: center;
+        background: #2754eb;
+        cursor: pointer;
+        border-radius: 50px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        transition: all .2s ease-in-out;
+        z-index: 2;
+
+        &:hover {
+            background: #2d5af1;
+        }
+    }
+
+    &__iphone {
+        position: absolute;
+        width: 304px;
+        height: 877px;
+        background: url(../images/iphone.jpg) no-repeat center;
+        top: -170px;
+        right: 0;
+    }
+}

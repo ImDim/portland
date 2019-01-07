@@ -1,0 +1,83 @@
+mixin left-menu-list__item(text)
+
+    mixin left-submenu
+        ul.left-submenu
+            +left-submenu__item('Cell Phones')
+            +left-submenu__item('Cameras')
+            +left-submenu__item('Computers')
+            +left-submenu__item('TV.Audio')
+            +left-submenu__item('Video Games')
+
+    mixin left-submenu__item
+        li.left-submenu__item
+            a.left-submenu__link(href="/")= text
+
+    li.left-menu-list__item
+        a.left-menu-list__link(href="/")= text
+            i.fas.fa-angle-right.left-menu-list__arrow
+        +left-submenu
+
+mixin left-menu-options__item(text, info, type, name)
+    li.left-menu-options__item
+        label.left-menu-options__label
+            input(type=type name=name class="left-menu-options__"+type)
+            span.left-menu-options__text= text
+            if info
+                span.left-menu-options__info= info
+
+aside.left-menu
+    ul.left-menu__block.left-menu-list
+        +left-menu-list__item('Top Sales')
+        +left-menu-list__item('Brand Focus')
+        +left-menu-list__item('Hi-Tech')
+        +left-menu-list__item('Home')
+        +left-menu-list__item('Sale')
+
+    .left-menu__block
+        h3.left-menu-header
+            span.left-menu-header__text
+                |Available
+        ul.left-menu-options
+            +left-menu-options__item('In Storage', '45', 'radio', 'aviable')
+            +left-menu-options__item('In Online-Shop', '12', 'radio', 'aviable')
+
+        h3.left-menu-header
+            span.left-menu-header__text
+                |Brands
+            a.left-menu-header__info(href="/")
+                |All
+
+        ul.left-menu-options
+            +left-menu-options__item('Apple', '32', 'checkbox', 'brands')
+            +left-menu-options__item('JBL', '14', 'checkbox', 'brands')
+            +left-menu-options__item('Bose', '3', 'checkbox', 'brands')
+            +left-menu-options__item('Nest', '5', 'checkbox', 'brands')
+
+
+    .left-menu__block
+        h3.left-menu-header
+            span.left-menu-header-text
+                |Condition
+            a.left-menu-header__info(href="/")
+                |See all
+        ul.left-menu-options
+            +left-menu-options__item('New', false, 'checkbox', 'condition')
+            +left-menu-options__item('Manufacturer Refurbished', false, 'checkbox', 'condition')
+            +left-menu-options__item('Seller Refurbished', false, 'checkbox', 'condition')
+            +left-menu-options__item('Used', false, 'checkbox', 'condition')
+            +left-menu-options__item('For Parts or nor Working', false, 'checkbox', 'condition')
+
+    .left-menu__block
+        h3.left-menu-header
+            span.left-menu-header__text
+                |Delivery Options
+        ul.left-menu-options.left-menu-options_inline
+            +left-menu-options__item('Free', false, 'radio', 'delivery')
+            +left-menu-options__item('$4.99', false, 'radio', 'delivery')
+
+.left-menu-expand
+    a.left-menu-expand__btn(href="")
+        i.fas.fa-bars.left-menu-expand__icon
+        span.left-menu-expand__text
+            |Show menu
+    

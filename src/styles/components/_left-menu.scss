@@ -1,0 +1,176 @@
+.left-menu-item {
+    @include flex(flex-start, center);
+    padding: 15px 20px;
+    border-bottom: 1px solid $mainBorderColor;
+}
+
+.left-submenu {
+    @extend .list_unstyled;
+    margin-top: -1px;
+    height: 0;
+    overflow: hidden;
+    transition: all .2s ease;
+
+    &__link {
+        @include link-style($secondColor);
+        @extend .left-menu-item;
+        background: #f0f2f7;
+        border-bottom: 1px solid #dfe4ee;
+
+        &:hover {
+            background: #e8ecf5;
+            color: #8d92af;
+        }
+    }
+
+    &__item:first-child &__link {
+        border-top: 1px solid #dfe4ee;
+    }
+}
+
+$br1: 1000px;
+
+.left-menu {
+    width: 270px;
+    box-sizing: border-box;
+
+    @media all and (max-width: $br1) {
+        width: 100%;
+        flex-grow: 1;
+        display: none;
+    }
+
+    &-expand {
+        @include flex(center, center);
+        display: none;
+        width: 100%;
+        margin-top: -15px;
+
+        &__btn {
+            display: inline-block;
+            padding: 15px 25px;
+            text-transform: uppercase;
+            text-align: center;
+            @include link-style($secondColor);
+            cursor: pointer;
+            border-radius: 3px;
+            &:active {
+                background: $blocksBg;
+            }
+        }
+        @media all and (max-width: $br1) {
+            display: flex;
+        }
+
+        &__icon {
+            margin-right: 7px;
+        }
+    }
+
+    &__block {
+        @extend .list_unstyled;
+        background: $blocksBg;
+        border-radius: 5px;
+        margin-bottom: 30px;
+    }
+
+    &-list {
+        $list: &;
+        overflow: hidden;
+
+        // Раскрываем саб-меню
+        &__item {
+            &_active {
+                #{$list}__arrow {
+                    transform: rotate(90deg);
+                }
+                .left-submenu {
+                    height: 100%;
+                }
+            }
+        }
+
+        &__link {
+            @include link-style($firstColor);
+            @extend .left-menu-item;
+            &:hover {
+                background: #f6f7fb;
+            }
+        }
+
+        &__arrow {
+            color: $secondColor;
+            margin-left: auto;
+            transition: all .2s ease;
+        }
+    }
+
+    &-header {
+        @extend .left-menu-item;
+        text-transform: uppercase;
+        font-size: 11px;
+        border-top: 1px solid $mainBorderColor;
+        margin: 0;
+        &:first-child {
+            border-top: none;
+        }
+
+        &__text{
+            display: inline-block;
+        }
+        &__info {
+            margin-left: auto;
+            display: inline-block;
+            @include link-style(#2754eb);
+        }
+    }
+    &-options {
+        $options: &;
+        @extend .list_unstyled;
+        padding: 13px 0;
+
+        &__item {
+            padding: 7px 20px;
+
+            &:hover {
+                background: #f6f7fb;
+            }
+        }
+        &__label {
+            @include flex(flex-start, center);
+            cursor: pointer;
+            margin: 0;
+        }
+        &__radio {
+            @extend .radio;
+        }
+        &__checkbox {
+            @extend .checkbox;
+        }
+        &__radio, &__checkbox {
+            margin-right: 14px;
+        }
+        &__info {
+            color: $secondColor;
+            margin-left: auto;
+            display: inline-block;
+        }
+        &_inline {
+            @include flex;
+            padding: 0;
+
+            #{$options}__item {
+                padding: {
+                    top: 14px;
+                    bottom: 14px;
+                }
+                border-right: 1px solid $mainBorderColor;
+                flex-grow: 1;
+
+                &:last-child {
+                    border-right-width: 0;
+                }
+            }
+        }
+    }
+}

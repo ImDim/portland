@@ -1,0 +1,42 @@
+mixin site-footer-menu__item(text)
+    li.site-footer-menu__item
+        a.site-footer-menu__link(href="/")= text
+
+footer.site-footer
+    .site-container
+        .site-footer__top
+            a.site-logo.site-logo_white.site-footer__logo
+
+            ul.site-footer-menu
+                +site-footer-menu__item('Home')
+                +site-footer-menu__item('Shop')
+                +site-footer-menu__item('Team')
+                +site-footer-menu__item('About Us')
+                +site-footer-menu__item('Contacts')
+
+            ul.social-list
+                li.social-list__item
+                    a.social-list__link(href="/")
+                        i.fab.fa-vk
+
+                li.social-list__item
+                    a.social-list__link(href="/")
+                        i.fab.fa-facebook-f
+
+                li.social-list__item
+                    a.social-list__link(href="/")
+                        i.fab.fa-google-plus-g
+
+        .site-footer__bottom
+            p.site-footer__about
+                |She gave my mother such a turn, that I have always been convinced I am indebted to Miss Betsey for 
+                |having been born on a Friday.
+
+            ul.site-footer-links
+                li.site-footer-links__item
+                    a.site-footer-links__link(href="/")
+                        |Privacy policy
+
+                li.site-footer-links__item
+                    a.site-footer-links__link(href="/")
+                        |Terms and conditions
